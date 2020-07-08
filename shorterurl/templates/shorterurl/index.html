@@ -1,4 +1,25 @@
 {% extends "base_generic.html" %}
 {% block content %}
-<h1>index</h1>
+<h1>Shorterurl</h1>
+
+<form action="{% url 'shorterurl:index' %}" method='post'>
+	{%csrf_token%}
+	<div class="form-group">
+		<label for="url">Url</label>
+		<input type="text" class="form-control" id="url" name="url">
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% if error %}
+
+		<ul>
+			<li>{{error}}</li>
+		</ul>
+{% elif object_url%}
+
+	<h1>{{url_name}}</h1>
+{% endif %}
+
 {% endblock %}
