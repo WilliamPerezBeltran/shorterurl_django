@@ -5,5 +5,5 @@ app_name = "shorterurl"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    # path('<str:token>', views.index, name='index'),
+    path("<str:shorter_url>/", views.redirect_url, name="redirect_url"),
 ]

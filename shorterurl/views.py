@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 import pdb
 from .models import Url
 
@@ -27,3 +27,10 @@ def index(request):
         return render(request, "shorterurl/index.html", context)
     else:
         return render(request, "shorterurl/index.html",)
+
+
+def redirect_url(request, shorter_url):
+
+    get_url = Url.objects.filter(url_base62=shorter_url)[0]
+
+    return redirect(get_url.url_text)
