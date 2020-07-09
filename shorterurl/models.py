@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 
 
 class Url(models.Model):
-    url_text = models.CharField(max_length=200)
+    url_text = models.CharField(max_length=200, null=False)
     url_base62 = models.CharField(max_length=200)
 
     def decode_url_string_to_base62(self, url):
